@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wine Quality Predictor</title>
+</head>
+<body>
+
+<h1>Wine Quality Predictor</h1>
+
+<input id="fixed_acidity" placeholder="Fixed Acidity"><br><br>
+<input id="volatile_acidity" placeholder="Volatile Acidity"><br><br>
+<input id="citric_acid" placeholder="Citric Acid"><br><br>
+<input id="residual_sugar" placeholder="Residual Sugar"><br><br>
+<input id="alcohol" placeholder="Alcohol"><br><br>
+
+<button onclick="predictQuality()">Predict</button>
+
+<h2 id="result"></h2>
+
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
