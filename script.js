@@ -14,7 +14,7 @@ async function loadModel() {
     session = await ort.InferenceSession.create("wine_quality_model.onnx", {
   executionProviders: ['wasm']
 });
-    resultText.innerText = "Model loaded. Enter values and Predict.";
+    resultText.innerText = "Enter values and Predict";
     console.log("Model loaded");
     console.log("Inputs:", session.inputNames);
     console.log("Outputs:", session.outputNames);
@@ -36,7 +36,7 @@ async function predictQuality() {
   const resultText = document.getElementById("result");
 
   if (!session) {
-    resultText.innerText = "Model failed.";
+    resultText.innerText = "Model failed";
     return;
   }
 
