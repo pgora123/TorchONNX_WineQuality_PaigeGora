@@ -10,11 +10,11 @@ async function loadModel() {
   const resultText = document.getElementById("result");
 
   try {
-    resultText.innerText = "Loading model...";
+    resultText.innerText = "Loading model";
     session = await ort.InferenceSession.create("wine_quality_model.onnx", {
   executionProviders: ['wasm']
 });
-    resultText.innerText = "Model loaded. Enter values and click Predict.";
+    resultText.innerText = "Model loaded. Enter values and Predict.";
     console.log("Model loaded");
     console.log("Inputs:", session.inputNames);
     console.log("Outputs:", session.outputNames);
@@ -36,7 +36,7 @@ async function predictQuality() {
   const resultText = document.getElementById("result");
 
   if (!session) {
-    resultText.innerText = "Model is still loading or failed to load.";
+    resultText.innerText = "Model failed.";
     return;
   }
 
@@ -49,7 +49,7 @@ async function predictQuality() {
   ];
 
   if (values.some(isNaN)) {
-    resultText.innerText = "Please enter all values.";
+    resultText.innerText = "enter all values.";
     return;
   }
 
@@ -64,10 +64,10 @@ async function predictQuality() {
     const predictionScaled = results[outputName].data[0];
     const prediction = unscaleOutput(predictionScaled);
 
-    resultText.innerText = "Predicted wine quality: " + prediction.toFixed(2);
+    resultText.innerText = "predicted wine quality: " + prediction.toFixed(2);
   } catch (error) {
-    console.error("Prediction error:", error);
-    resultText.innerText = "Prediction failed: " + error.message;
+    console.error("prediction error:", error);
+    resultText.innerText = "prediction failed: " + error.message;
   }
 }
 
